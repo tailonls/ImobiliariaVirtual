@@ -1,0 +1,109 @@
+BDD com Cucumber:
+
+BDD (Behavior Driven Development ou Desenv. Orientado a Comportamento)
+
+BDD criado a partir da insatisfação do TDD (Test driven development)
+
+	TDD = Desenvolvimento em ciclos curtos de repetições onde eu: Escrevo o teste que valide um funcionalidade que necessito e só então crio a funcionalidade que vai ser validada pelo teste que eu criei.
+
+- Escrever testes que integram regras de negócios com a linguagem de programação
+- Focando no comportamento do Sistema
+- Saber mais sobre o que deveria ser testado
+
+"Possibilitar que as funcionalidades do sistema sejam escritas em linguagem natural"
+
+Vantagem:
+	Comunicação entre equipes: (Dev, Tester e PO falam a mesma linguagem)
+	
+	Documentação dinâmica: em equipes ágeis, administrar documentações é algo custoso, com BDD a documentação é criada durante o planejamento do produto sem esforço adicional
+	
+EXEMPLO:
+Funcionalidade: Sacar no caixa eletrônico
+
+Cenario: Sacar dinheiro com cartao
+	Dado que insiro o meu cartão no caixa eletrônico
+	Entao deve aparecer a tela solicitando a senha do cartao
+	Quando informo a senha do cartao
+	E clico confirmo
+	Entao deve aparecer o menu principal
+	Quando seleciono a opcao "Saque"
+	Entao deve aparecer a tela com o campo de valor de saque
+	E informo o valor
+	E clico confirmo
+	Entao deve aparecer a mesagem "agaurde separando notas..."
+	E o caixa deve expelir o valor solicitado
+	
+AÇÕES E RESULTADOS entre usuario e sistema:
+
+	Usuário executa alguma ação
+	Sistema responde com alguma operação
+	Usuário executa outra ação
+	Sistema responde com outra ação
+	etc...
+
+	USUARIO -> Dado que insiro o meu cartão no caixa eletrônico
+	SISTEMA -> Entao deve aparecer a tela solicitando a senha do cartao
+	USUARIO -> Quando informo a senha do cartao
+	USUARIO -> E clico confirmo
+	SISTEMA -> Entao deve aparecer o menu principal
+	USUARIO -> Quando seleciono a opcao "Saque"
+	SISTEMA -> Entao deve aparecer a tela com o campo de valor de saque
+	USUARIO -> E informo o valor
+	USUARIO -> E clico confirmo
+	SISTEMA -> Entao deve aparecer a mesagem "agaurde separando notas..."
+	SISTEMA -> E o caixa deve expelir o valor solicitado
+	
+==================================
+
+Cenario: Gerar titulos
+	Dado que gero um titulo com seguintes dados
+		|TIPO	|VALOR	|DOCUMENTO		|
+		|PF		|10.00	|12345678909	|
+
+==================================
+
+Esquema do Cenario: Gerar titulo <TIPO_USUARIO>
+	Dado que gero um titulo para um usuario <TIPO_USUARIO>
+	...
+
+Exemplos:
+	|TIPO_USUARIO	|
+	|PJ				|
+	|PF				 |
+
+==================================
+
+Contexto:
+    Dado que acesso a tela de login do caixa
+    Quando informo cooperativa, usuario e senha
+    Entao o usuario deve acessar a tela inicial do caixa com sucesso
+
+	Cenario: Acessar operacao 12
+		Dado que acesso a operacao "12"
+		...
+	
+	Cenario: Acessar operacao 12
+		Dado que acesso a operacao "18"
+		...
+		
+==================================
+
+Ferramentas que implementam o BDD:
+	Cucumber (Java, Js, Ruby...)
+	Behave (python)
+	
+	
+Testes com BDD são compostos por arquivos de feature (funcionalidade) e arquivos de definição de passos (Steps), esses arquivos vão implementar os métodos que testam as regras de negocio:
+
+	Ex.:
+		Runner (aciona a...) Feature (que são implementados pelo...) Step (que utilizam os métodos da...) Page (que interagem com os elementos na tela mepeados pelo..) ElementMap
+
+		- Classes Runner: classes que executam o teste BDD
+		- Arquivos de feature: Arquivo com o BDD que descreve as regras de negocio
+		- Classes Step: Classe que implementam cada passo (step) do BDD
+		- Classes Pages: Classes com os metodos que implementam as regras de negocio interagindo com o sistema
+		- Classes ElementMap: Classe opcional que mapeia cada elemento da tela do sistema (é utilizado pela classes pages)
+
+https://cucumber.io/
+https://dannorth.net/introducing-bdd/
+https://www.concrete.com.br/2014/12/16/introducao-bdd-e-cucumber/
